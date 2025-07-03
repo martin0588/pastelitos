@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Tentación - Pastelería Artesanal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fdf8f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #d4a574 0%, #c89660 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f4e6d7" width="1200" height="600"/><circle fill="%23d4a574" cx="200" cy="150" r="80"/><circle fill="%23c89660" cx="800" cy="200" r="60"/><circle fill="%23e6d3b5" cx="1000" cy="400" r="70"/><circle fill="%23d4a574" cx="400" cy="450" r="50"/></svg>');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            background: #d4a574;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #c89660;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+        
+        .productos {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .productos h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #8b4513;
+        }
+        
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .producto {
+            background: #fdf8f5;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 3px solid #e6d3b5;
+        }
+        
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .producto-emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .producto h3 {
+            color: #8b4513;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .producto p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .precio {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d4a574;
+            margin-bottom: 1rem;
+        }
+        
+        .especialidades {
+            background: linear-gradient(135deg, #f4e6d7 0%, #e6d3b5 100%);
+            padding: 4rem 0;
+        }
+        
+        .especialidades h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #8b4513;
+        }
+        
+        .especialidades-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .especialidad {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .especialidad-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contacto {
+            background: #8b4513;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .contacto h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .contacto-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contacto-item {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contacto-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contacto-item p {
+            font-size: 1.1rem;
+        }
+        
+        .horarios {
+            background: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .horarios h2 {
+            color: #8b4513;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .horarios-tabla {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .horario-item {
+            background: #fdf8f5;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #d4a574;
+        }
+        
+        footer {
+            background: #5d4037;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            border-radius: 50px;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .productos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🧁 Dulce Tentación</h1>
+            <p>Pastelería Artesanal - Endulzando tu vida desde 2020</p>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Postres Frescos y Deliciosos</h2>
+            <p>Hechos con amor y los mejores ingredientes</p>
+            <a href="#productos" class="cta-button">Ver Nuestros Productos</a>
+        </div>
+    </section>
+
+    <section class="productos" id="productos">
+        <div class="container">
+            <h2>Nuestros Productos</h2>
+            <div class="productos-grid">
+                <div class="producto">
+                    <span class="producto-emoji">🎂</span>
+                    <h3>Tortas Personalizadas</h3>
+                    <p>Tortas únicas para cumpleaños, bodas y eventos especiales. Sabores variados y decoraciones personalizadas según tu gusto.</p>
+                    <div class="precio">Desde $25.000</div>
+                </div>
+                
+                <div class="producto">
+                    <span class="producto-emoji">🧁</span>
+                    <h3>Cupcakes Gourmet</h3>
+                    <p>Cupcakes artesanales con buttercream casero. Perfectos para fiestas y regalos. Variedad de sabores disponibles.</p>
+                    <div class="precio">$3.000 c/u</div>
+                </div>
+                
+                <div class="producto">
+                    <span class="producto-emoji">🍰</span>
+                    <h3>Cheesecakes</h3>
+                    <p>Cheesecakes cremosos y deliciosos. Frutos rojos, maracuyá, chocolate y sabores de temporada.</p>
+                    <div class="precio">$18.000</div>
+                </div>
+                
+                <div class="producto">
+                    <span class="producto-emoji">🥧</span>
+                    <h3>Tartas Frutales</h3>
+                    <p>Tartas frescas con frutas de temporada. Base crujiente y crema pastelera casera.</p>
+                    <div class="precio">$15.000</div>
+                </div>
+                
+                <div class="producto">
+                    <span class="producto-emoji">🍪</span>
+                    <h3>Galletas Artesanales</h3>
+                    <p>Galletas recién horneadas, decoradas y personalizadas. Ideales para eventos y regalos corporativos.</p>
+                    <div class="precio">$1.500 c/u</div>
+                </div>
+                
+                <div class="producto">
+                    <span class="producto-emoji">🍩</span>
+                    <h3>Donuts Caseros</h3>
+                    <p>Donuts frescos con glaseados variados. Disponibles todos los días en diferentes sabores.</p>
+                    <div class="precio">$2.500 c/u</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="especialidades">
+        <div class="container">
+            <h2>Nuestras Especialidades</h2>
+            <div class="especialidades-lista">
+                <div class="especialidad">
+                    <div class="especialidad-emoji">👩‍🍳</div>
+                    <h3>Recetas Familiares</h3>
+                    <p>Recetas tradicionales transmitidas de generación en generación</p>
+                </div>
+                <div class="especialidad">
+                    <div class="especialidad-emoji">🌱</div>
+                    <h3>Ingredientes Naturales</h3>
+                    <p>Solo utilizamos ingredientes frescos y naturales, sin conservantes</p>
+                </div>
+                <div class="especialidad">
+                    <div class="especialidad-emoji">🎨</div>
+                    <h3>Decoración Personalizada</h3>
+                    <p>Cada postre es una obra de arte única y personalizada</p>
+                </div>
+                <div class="especialidad">
+                    <div class="especialidad-emoji">🚚</div>
+                    <h3>Entrega a Domicilio</h3>
+                    <p>Llevamos tus postres favoritos hasta la puerta de tu casa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="horarios">
+        <div class="container">
+            <h2>Horarios de Atención</h2>
+            <div class="horarios-tabla">
+                <div class="horario-item">
+                    <h3>Lunes - Viernes</h3>
+                    <p>8:00 AM - 7:00 PM</p>
+                </div>
+                <div class="horario-item">
+                    <h3>Sábados</h3>
+                    <p>9:00 AM - 8:00 PM</p>
+                </div>
+                <div class="horario-item">
+                    <h3>Domingos</h3>
+                    <p>10:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contacto">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <div class="contacto-info">
+                <div class="contacto-item">
+                    <h3>📱 WhatsApp</h3>
+                    <p>+57 300 123 4567</p>
+                </div>
+                <div class="contacto-item">
+                    <h3>📧 Email</h3>
+                    <p>dulce.tentacion@gmail.com</p>
+                </div>
+                <div class="contacto-item">
+                    <h3>📍 Dirección</h3>
+                    <p>Calle 123 #45-67<br>Barrio Centro</p>
+                </div>
+                <div class="contacto-item">
+                    <h3>📷 Instagram</h3>
+                    <p>@dulce.tentacion</p>
+                </div>
+            </div>
+            <a href="https://wa.me/573001234567" class="cta-button" target="_blank">
+                Hacer Pedido por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dulce Tentación - Pastelería Artesanal. Todos los derechos reservados.</p>
+            <p>Con amor para endulzar tu vida ❤️</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank">
+        📱 WhatsApp
+    </a>
+</body>
+</html>
